@@ -1,0 +1,102 @@
+安全性、擴展、好上手
+做文件、註解
+
+舊系統與新系統結合
+
+工具:
+	mySQL workbench
+	phpstorm
+	XAMPP
+
+
+mySQL workbench:
+	ER Diagram:
+		@待讀	
+	EER Diagram
+		關聯性資料表連接(圖形化)
+			- Table Name: 名稱要清楚，下底線分隔
+			- 資料庫引擎: 
+				- InnoDB 
+					- 慢
+					- 不會忘記刪其他表格的疑慮
+					- 使用 foreign key 就可以在資料庫裏面連結
+					- 要先刪葉節點才可以刪主節點的資料表
+
+				- myacssum
+
+				- memory 
+					- 最快
+					- 停電完蛋
+			- 語系: utf8-mb4
+			- 語系間解碼差別	
+				- 存4個byte
+				- 支語系: 
+					unicode_ci
+					general_ci
+				- 支語系之間速度差別
+			- sql connection 
+				提醒資料庫要用utf8連線，不然default是使用latin1
+			- KEY
+				- PK primary key
+					- ORM 一般都使用 ID 作為 primary key
+				- AI auto increatment 
+					- 一直累計上去，mysql幫忙累加，確認PK不會重複 (一定要INT系列datatype)
+			- Datatype
+				- INT 4 bit
+				- BIGINT 可以存很大量資料
+				- VARCHAR(45) 固定長度
+				- VARCHAR 彈性長度
+	設語系的地方
+		- HOST
+		- connection
+		- table
+
+	- Forward Engineer
+
+
+zf3
+	- autoload 的意義
+		- add module
+			modules.config.php 加入
+			autoload 加入
+			composer dump-autoload
+			model/config
+		- gitignore
+			git push 時 data/cache/ 必須建立，所以必須在ignore中傳一個 .gitkeep 空檔案，否則git不會push空資料夾
+		- git 會ignore.dist檔
+			dist可以做示範用，但保密資料會在另外一個檔案輸入
+	- config/modules.config.php
+		- return 中後面新建的module 設定會把前面的蓋掉
+	- zend 使用 array return config setting
+		- 原因: 效率考量
+		- 如果後面有同名稱的也會把前面的設定蓋掉
+	- module.config.php 
+		- route 5 種
+			- Literal
+				- /home //不會更動的網頁
+				- 其中會指定 Controller 的某個class做module的操作
+				- action中要使用function
+			- Segment
+				- /application[/:action]
+				- 之後新增進 Controller 的 Action 都可以一次用 Segment route解決
+				- 例: localhost:8080/application/about/
+					  localhost:8080/application/user-list/
+					  * Controller 中 userListAction 函式
+					  * view 中 application\index\user-list.phtml
+		- error
+			- error/404 中會 show error detail
+	- 樣板 layout
+		- 控制輸出樣板，所有 phtml 都會套用樣板
+	- 容器 Container
+		- zend-di
+		@待讀
+	- ZendTwig
+
+	- ORM
+		for mySQL
+	- ODM
+		for MongoDB
+
+新舊資料表
+ 	- a_ : 常用
+ 	- 
