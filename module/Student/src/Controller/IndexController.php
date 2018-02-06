@@ -7,23 +7,21 @@
 
 namespace Student\Controller;
 
-use Zend\Mvc\Controller\AbstractActionController;
+
 use Zend\View\Model\ViewModel;
 
-class IndexController extends AbstractActionController
+class IndexController extends BaseController
 {
-    protected $container;
-
-    public function __construct($container = null)
-    {
-        $this->container = $container;
-    }
-
     public function indexAction()
     {
-        $sm = $this->container->get('Doctrine\ORM\EntityManager');
+        return new ViewModel();
+    }
 
-        $conn = $sm->getConnection();
+    public function listAction()
+    {
+        $viewModel = new ViewModel();
+        $em = $this->getEntityManager();
+        $conn = $em->getConnection();
         $res = $conn->prepare('SELECT * FROM zend.student');
         $res->execute();
         $red = $res->fetchAll();
@@ -32,7 +30,7 @@ class IndexController extends AbstractActionController
             echo $data['id'].'-'.$data['name'].'-'.$data['email'].'<br>';
         }
 
-        return new ViewModel();
+        return $viewModel;
     }
 
 }

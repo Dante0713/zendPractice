@@ -7,9 +7,8 @@
 
 namespace Student;
 
-use Zend\Router\Http\Literal;
+use Student\Factory\BaseFactory;
 use Zend\Router\Http\Segment;
-use Zend\ServiceManager\Factory\InvokableFactory;
 return [
     'router' => [
         'routes' => [
@@ -27,9 +26,7 @@ return [
     ],
     'controllers' => [
         'factories' => [
-            Controller\IndexController::class => function($container){
-                return new Controller\IndexController($container);
-            }
+            Controller\IndexController::class => BaseFactory::class
         ],
     ],
     'view_manager' => [
