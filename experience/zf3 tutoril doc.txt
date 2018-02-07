@@ -58,9 +58,9 @@ zf3
 	- autoload 的意義
 		- add module
 			modules.config.php 加入
-			autoload 加入
-			composer dump-autoload
-			model/config
+			autoload 加入 `composer dump-autoload`
+			model/config/module.config.php
+			記得Doctrine建立Repositories也要composer dump-autoload一下
 		- gitignore
 			git push 時 data/cache/ 必須建立，所以必須在ignore中傳一個 .gitkeep 空檔案，否則git不會push空資料夾
 		- git 會ignore.dist檔
@@ -99,4 +99,3 @@ zf3
 
 新舊資料表
  	- a_ : 常用
- 	- 

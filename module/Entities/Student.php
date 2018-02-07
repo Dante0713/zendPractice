@@ -1,6 +1,6 @@
 <?php
 
-
+namespace Entities;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Student
  *
  * @ORM\Table(name="student")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Entities\Repositories\StudentRepository")
  */
 class Student
 {

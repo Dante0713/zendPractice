@@ -20,14 +20,15 @@ class IndexController extends BaseController
     public function listAction()
     {
         $viewModel = new ViewModel();
-        $em = $this->getEntityManager();
-        $conn = $em->getConnection();
-        $res = $conn->prepare('SELECT * FROM zend.student');
-        $res->execute();
-        $red = $res->fetchAll();
+        $sm = $this->getEntityManager();
+//        $conn = $em->getConnection();
+//        $res = $conn->prepare('SELECT * FROM zend.student');
+//        $res->execute();
+//        $red = $res->fetchAll();
+        $select = $sm->getRepository('Entities\Student')->getAllStudent();
 
-        foreach ($red as $data){
-            echo $data['id'].'-'.$data['name'].'-'.$data['email'].'<br>';
+        foreach ($select as $data){
+            echo $data->getId().'-'.$data->getName().'-'.$data->getEmail().'<br>';
         }
 
         return $viewModel;
